@@ -45,6 +45,7 @@ class RiscvGnuToolchain < Formula
   depends_on "libmpc"
   depends_on "mpfr"
   depends_on "zstd"
+  depends_on "texinfo"
 
   def install
     # disable crazy flag additions
@@ -57,7 +58,9 @@ class RiscvGnuToolchain < Formula
 
     args = [
       "--prefix=#{prefix}",
-      "--with-cmodel=medany",
+    #  "--with-cmodel=medany",
+      "--with-arch=rv32emc",
+      "--with-abi=ilp32e"
     ]
     args << "--enable-multilib" unless build.with?("NOmultilib")
 
